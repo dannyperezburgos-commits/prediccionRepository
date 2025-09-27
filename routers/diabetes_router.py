@@ -6,6 +6,7 @@ router = APIRouter()
 
 @router.post("/predict")
 async def predict(data: PatientData):
+    print ("modelo", data.modelo)
     try:
         return {"prediccion": diabetes_prediction(data), "modelo": data.modelo}
     except KeyError:
