@@ -8,11 +8,6 @@ app.include_router(diabetes_router.router)
 
 origins = ["*"]
 
-@app.get("/")
-def index():
-    return {"hola":"munddo"}
-
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,           # quién puede hacer peticiones
@@ -22,4 +17,6 @@ app.add_middleware(
 )
 
 
-
+@app.get("/")
+def index():
+    return {"hola":"munddo"}
