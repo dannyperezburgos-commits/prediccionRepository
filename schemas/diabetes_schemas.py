@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from typing import Literal
 
 class PatientData(BaseModel):
     n: int
@@ -8,4 +9,5 @@ class PatientData(BaseModel):
     humidity: float
     ph: float
     rainfall: float
-    label: str
+    modelo: Literal['svm', 'rf']
+    label: str | None = None

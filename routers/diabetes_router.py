@@ -7,9 +7,8 @@ router = APIRouter()
 @router.post("/predict")
 async def predict(data: PatientData):
     try:
-        prediccion = diabetes_prediction(data)
-        return {"prediccion": prediccion, "modelo": data.modelo}
+        return {"prediccion": diabetes_prediction(data), "modelo": data.modelo}
     except KeyError:
-        raise HTTPException(status_code=400, detail="Modelo inválido. Use 'svm' o 'rf'.")
+        raise HTTPException(status_code=400, detail="Modelo inválido")
     except Exception:
         raise HTTPException(status_code=500, detail="Error interno")

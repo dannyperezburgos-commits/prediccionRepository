@@ -25,5 +25,10 @@ def diabetes_prediction(data: PatientData):
         data.rainfall
     ]).reshape(1, 7)
 
-    prediction = MODELOS[data.modelo].predict(xin)
-    return LABELS[int(prediction[0])]
+    y = MODELOS[data.modelo].predict(xin)[0]
+    if isinstance(y, str):
+        return y
+    try:
+        return LABELS[int(y)]
+    except:
+        return str(y)
